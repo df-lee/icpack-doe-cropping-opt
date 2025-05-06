@@ -38,4 +38,18 @@
 9. Final Spec & Documentation
     └─ Parameter recommendations  
        Integrated into process spec
+
 ```
+
+| Parameter             | Type           | Unit       | Example Levels           |
+|-----------------------|----------------|------------|--------------------------|
+| Blade Speed           | Control Factor | rpm        | 3000 / 4000 / 5000       |
+| Cutting Force         | Control Factor | N          | 20 / 25 / 30             |
+| Blade Material        | Control Factor | —          | Steel / Coated Alloy     |
+| Cutting Angle         | Control Factor | °          | 0 / 15 / 30              |
+| Tape Adhesion Type    | Control Factor | —          | Type A / Type B          |
+| Leadframe Thickness   | Control Factor | mm         | 0.15 / 0.20              |
+| Ambient Humidity      | Noise Factor   | %RH        | Low / Medium / High      |
+| Room Temperature      | Noise Factor   | °C         | 20 / 25 / 30             |
+
+
