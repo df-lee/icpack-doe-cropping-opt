@@ -50,14 +50,9 @@ flowchart LR
     class C1,C2 validate;
     class D1 finalize;
 ```
+### Preprocessing Stage
 
-
-
-
-
-
-
-## 📐 Preprocessing Parameter Selection
+In the preprocessing stage, a set of candidate process parameters was selected based on engineering experience, with the aim of evaluating their effects on burr formation during the cropping process, as illustrated in the table below.
 
 <div align="center">
     
@@ -67,11 +62,23 @@ flowchart LR
 | Machine Parameter     | Cutting Force        | Control Factor | N    | 20<br>25<br>30                                                  |
 | Machine Parameter     | Cutting Angle        | Control Factor | °    | 0<br>15<br>30                                                   |
 | Material Parameter    | Blade Material       | Control Factor | —    | High-Speed Steel (HSS)<br>TiAlN-Coated Carbide                  |
-| Material Parameter    | Tape Adhesion Type   | Control Factor | —    | Acrylic-Based PSA Tape<br>UV Dicing Tape   |
+| Material Parameter    | Tape Adhesion Type   | Control Factor | —    | Acrylic-Based Pressure-Sensitive Tape (PSA)<br>UV Dicing Tape   |
 | Material Parameter    | Leadframe Thickness  | Control Factor | mm   | 0.15<br>0.20                                                    |
 | Environment Parameter | Ambient Humidity     | Noise Factor   | %RH  | 25–35<br>45–55<br>65–75                                         |
 | Environment Parameter | Room Temperature     | Noise Factor   | °C   | 20<br>25<br>30                                                  |
 
 </div>
+
+### Optimization Stage
+
+To efficiently screen non-influential variables, a Resolution IV fractional factorial design was conducted. This design allows for clear estimation of main effects while confounding higher-order interactions, making it suitable for preliminary screening. Significant factors identified in the screening phase were then subjected to a 3-level full factorial design, which enabled the detection of non-linear trends and second-order interactions among key parameters. Following this, a Central Composite Design (CCD) was implemented to fit a second-order response surface model. The CCD incorporated axial and center points to ensure rotatability and model curvature, allowing for precise determination of optimal operating regions. Model quality was evaluated using Analysis of Variance (ANOVA), lack-of-fit testing, and canonical analysis. These assessments confirmed the statistical significance of the model terms and characterized the nature of the response surface (e.g., convex, saddle-shaped).
+
+
+Four key factors — blade speed, cutting force, blade material, and tape adhesion type — were identified as primary contributors based on their mechanical influence on cutting quality.
+
+
+## 📐 Preprocessing Parameter Selection
+
+
 
 
