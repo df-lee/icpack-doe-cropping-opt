@@ -67,7 +67,7 @@ flowchart LR
 | Machine Parameter     | Cutting Force        | Control Factor | N    | 20<br>25<br>30                                                  |
 | Machine Parameter     | Cutting Angle        | Control Factor | °    | 0<br>15<br>30                                                   |
 | Material Parameter    | Blade Material       | Control Factor | —    | High-Speed Steel (HSS)<br>TiAlN-Coated Carbide                  |
-| Material Parameter    | Tape Adhesion Type   | Control Factor | —    | Acrylic-Based Pressure-Sensitive Tape (PSA)<br>UV Dicing Tape   |
+| Material Parameter    | Tape Adhesion Type   | Control Factor | —    | Acrylic-Based PSA Tape<br>UV Dicing Tape   |
 | Material Parameter    | Leadframe Thickness  | Control Factor | mm   | 0.15<br>0.20                                                    |
 | Environment Parameter | Ambient Humidity     | Noise Factor   | %RH  | 25–35<br>45–55<br>65–75                                         |
 | Environment Parameter | Room Temperature     | Noise Factor   | °C   | 20<br>25<br>30                                                  |
