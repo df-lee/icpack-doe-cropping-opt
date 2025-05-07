@@ -1,56 +1,63 @@
 ## 📈 Cropping Stage Parameter Optimization Flow
 
+This project followed a structured Design of Experiments (DOE) methodology to optimize the cropping process in a traditional IC packaging flow. The methodology is divided into four distinct stages, as outlined in the figure above:
+
+```mermaid
 flowchart LR
-    A[1. Define Objective\nReduce burrs\nImprove yield] --> 
-    B[2. Select Parameters\nIdentify key factors] --> 
-    C[3. Fractional Factorial Design\nResolution IV\nEliminate variables] --> 
-    D[4. Full Factorial Design\n3-level DOE\nInteraction effects] --> 
-    E[5. Response Surface Modeling\nCCD alpha = 1.414\nQuadratic model fit] --> 
-    F[6. Model Evaluation\nANOVA\nLack-of-Fit test\nCanonical analysis] --> 
-    G[7. Robustness Testing\nTaguchi L9\n±5% Sensitivity check] --> 
-    H[8. Validation Experiment\nPilot trial\nConfirm improvement] --> 
-    I[9. Final Spec & Documentation\nRecommend window\nUpdate process spec]
+    %% === Nodes ===
+    A1[Define Objective]
+    A2[Select Parameters]
 
+    B1[Fractional DOE]
+    B2[Full DOE]
+    B3[Response Surface Modeling]
+    B4[Model Evaluation]
 
-1. Define Objective
-    └─ Reduce burr formation  
-       Improve visual yield
+    C1[Robustness Testing]
+    C2[Validation Experiment]
 
-2. Select Parameters
-    └─ Identify key influential factors
+    D1[Final Spec]
 
-3. Fractional Factorial Design
-    └─ Resolution IV  
-       Eliminate unimportant variables
+    %% === Structure ===
+    subgraph Preprocessing Stage
+        A1 --> A2
+    end
 
-4. Full Factorial Design
-    └─ 3-level experiments  
-       Analyze main & interaction effects
+    subgraph Optimization Stage
+        B1 --> B2 --> B3 --> B4
+    end
 
-5. Response Surface Modeling (CCD)
-    └─ Fit quadratic model  
-       Generate prediction surface  
-       Center point replicates (alpha = 1.414)
+    subgraph Validation Stage
+        C1 --> C2
+    end
 
-6. Model Evaluation
-    └─ ANOVA  
-       Lack-of-Fit test  
-       Canonical analysis
+    subgraph Finalization
+        D1
+    end
 
-7. Robustness Testing
-    └─ Taguchi L9 array  
-       Sensitivity check ±5%
+    A2 --> B1
+    B4 --> C1
+    C2 --> D1
 
-8. Validation Experiment
-    └─ Pilot trial  
-       Confirm burr reduction
+    %% === Styling ===
+    classDef preprocess fill:#d0ebff,stroke:#339af0,color:#000;
+    classDef optimize fill:#e0f7fa,stroke:#00acc1,color:#000;
+    classDef validate fill:#e6f4ea,stroke:#43a047,color:#000;
+    classDef finalize fill:#fff3cd,stroke:#ffc107,color:#000;
 
-9. Final Spec & Documentation
-    └─ Parameter recommendations  
-       Integrated into process spec
-
+    class A1,A2 preprocess;
+    class B1,B2,B3,B4 optimize;
+    class C1,C2 validate;
+    class D1 finalize;
 ```
-## 📐 Parameters Used in Fractional Factorial Design
+
+
+
+
+
+
+
+## 📐 Preprocessing Parameter Selection
 
 <div align="center">
     
