@@ -73,19 +73,22 @@ In the preprocessing stage, a set of candidate process parameters was selected b
 
 ### Optimization Stage
 
-To efficiently screen non-influential variables, a Resolution IV fractional factorial design was conducted. This design allows for clear estimation of main effects while confounding higher-order interactions, making it suitable for preliminary screening. Significant factors identified in the screening phase were then subjected to a 3-level full factorial design, which enabled the detection of non-linear trends and second-order interactions among key parameters. Following this, a Central Composite Design (CCD) was implemented to fit a second-order response surface model. The CCD incorporated axial and center points to ensure rotatability and model curvature, allowing for precise determination of optimal operating regions. Model quality was evaluated using Analysis of Variance (ANOVA), lack-of-fit testing, and canonical analysis. These assessments confirmed the statistical significance of the model terms and characterized the nature of the response surface (e.g., convex, saddle-shaped).
+#### Fractional Factorial Design
+
+To efficiently screen non-influential variables, a Resolution IV fractional factorial design was conducted. In the context of factorial design, resolution refers to the degree to which main effects and interaction effects can be estimated independently of one another. A higher resolution indicates less aliasing (i.e., overlap) between effects. Specifically, Resolution III designs confound main effects with two-factor interactions, Resolution IV designs keep main effects unaliased with any two-factor interactions (though two-factor interactions may be aliased with each other), and Resolution V designs separate both main effects and two-factor interactions from all other terms. A general rule is that aliasing may occur between two effects if the sum of their orders is less than the resolution of the design. Resolution IV was selected because it offers a practical balance between experimental efficiency and interpretability: it enables confident estimation of main effects—which are the primary focus during initial screening—while significantly reducing the number of required experimental runs compared to full factorial designs. This makes it well suited for identifying key process drivers without the overhead of modeling higher-order interactions.
 
 #### 🔢 DOE Resolution Comparison Table
 
-| Resolution | Main Effects Can Be Separated? | Two-Factor Interactions Separable? | Typical Use Case                         |
-|------------|-------------------------------|-------------------------------------|------------------------------------------|
-| I          | ❌ No                         | ❌ No                              | Not usable; all effects are confounded   |
-| II         | ❌ No                         | ❌ No                              | Avoid; even main effects are aliased     |
-| III        | ⚠️ Partially                  | ❌ No                              | Rough screening with limited reliability |
-| IV         | ✅ Yes                        | ⚠️ No                              | Efficient main-effect screening          |
-| V          | ✅ Yes                        | ✅ Yes                             | Detailed modeling with interactions      |
-| VI         | ✅ Yes                        | ✅ Yes                             | Complex system modeling, high precision  |
+| Resolution   | Main Effects Can Be Separated?  | Two-Factor Interactions Separable?    | Typical Use Case                           |
+|:------------:|:-------------------------------:|:-------------------------------------:|:------------------------------------------:|
+| I            | ❌ No                           | ❌ No                                | Not usable; all effects are confounded     |
+| II           | ❌ No                           | ❌ No                                | Avoid; even main effects are aliased       |
+| III          | ⚠️ Partially                    | ❌ No                                | Rough screening with limited reliability   |
+| IV           | ✅ Yes                          | ⚠️ No                                | Efficient main-effect screening            |
+| V            | ✅ Yes                          | ✅ Yes                               | Detailed modeling with interactions        |
+| VI           | ✅ Yes                          | ✅ Yes                               | Complex system modeling, high precision    |
 
+#### Fulll Factorial Design
 
 
 Four key factors — blade speed, cutting force, blade material, and tape adhesion type — were identified as primary contributors based on their mechanical influence on cutting quality.
