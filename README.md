@@ -1,4 +1,4 @@
-## 📈 Cropping Stage Parameter Optimization Flow
+# 📈 Cropping Stage Parameter Optimization Flow
 
 This project followed a structured Design of Experiments (DOE) methodology to optimize the cropping process in a traditional IC packaging flow. The methodology is divided into four distinct stages, as outlined in the figure above:
 
@@ -10,7 +10,8 @@ flowchart LR
 
     B1[Fractional DOE]
     B3[Response Surface Modeling]
-    B4[Model Evaluation]
+
+    E1[Model Evaluation]
 
     C1[Robustness Testing]
     C2[Validation Experiment]
@@ -23,7 +24,11 @@ flowchart LR
     end
 
     subgraph Optimization Stage
-        B1 --> B3 --> B4
+        B1 --> B3
+    end
+
+    subgraph Model Evaluation
+        E1
     end
 
     subgraph Validation Stage
@@ -35,28 +40,31 @@ flowchart LR
     end
 
     A2 --> B1
-    B4 --> C1
+    B3 --> E1
+    E1 --> C1
     C2 --> D1
 
     %% === Styling ===
     classDef preprocess fill:#d0ebff,stroke:#339af0,color:#000;
     classDef optimize fill:#e0f7fa,stroke:#00acc1,color:#000;
+    classDef evaluate fill:#ede7f6,stroke:#7e57c2,color:#000;
     classDef validate fill:#e6f4ea,stroke:#43a047,color:#000;
     classDef finalize fill:#fff3cd,stroke:#ffc107,color:#000;
 
     class A1,A2 preprocess;
-    class B1,B3,B4 optimize;
+    class B1,B3 optimize;
+    class E1 evaluate;
     class C1,C2 validate;
     class D1 finalize;
 ```
 
-### Preprocessing Stage
+## Preprocessing Stage
 
-#### 1. Object Definition
+### 1. Object Definition
 
 In the preprocessing stage, a set of candidate process parameters was selected based on engineering experience, with the aim of evaluating their effects on burr formation during the cropping process, as illustrated in the table below.
 
-#### 2. Parameter Selection
+### 2. Parameter Selection
 
 #### 📐 Preprocessing Parameter Table
 
@@ -75,9 +83,9 @@ In the preprocessing stage, a set of candidate process parameters was selected b
 
 </div>
 
-### Optimization Stage
+## Optimization Stage
 
-#### 1. Fractional Factorial Design
+### 1. Fractional Factorial Design
 
 To efficiently screen non-influential variables, a ***Resolution IV Fractional Factorial Design*** was conducted. In the context of factorial design, resolution of a design is defined as *the length of the shortest word in its defining relation.* A higher resolution indicates less aliasing (i.e., overlap) between effects. Specifically, Resolution III designs confound main effects with two-factor interactions, Resolution IV designs keep main effects unaliased with any two-factor interactions (though two-factor interactions may be aliased with each other), etc. Resolution IV was selected because it offers a practical balance between experimental efficiency and interpretability: it enables confident estimation of main effects—which are the primary focus during initial screening—while significantly reducing the number of required experimental runs compared to higher resolution settings. This makes it well suited for identifying key process drivers without the overhead of modeling higher-order interactions.
 
@@ -115,7 +123,7 @@ After collecting response data, the ***Half-Normal Plot of Effects*** was used t
 
 </div>
 
-#### 2. Response Surface Modeling
+### 2. Response Surface Modeling
 
 ```mermaid
 graph TD
@@ -197,9 +205,9 @@ This model captures linear effects ($\beta_i x_i$), quadratic curvature ($\beta_
 
 #### 📐 Result...
 
-### Model Evaluation Stage
+## 3. Model Evaluation Stage
 
-#### 1. Analysis of Variance (ANOVA)
+### 3.1. Analysis of Variance (ANOVA)
 
 ANOVA was used to assess the overall significance of the model and the contribution of each term. A low p-value (typically < 0.05) for the model indicates that the selected factors explain a significant portion of the variability in the response. Term-specific p-values help identify which main effects, interactions, or quadratic terms are statistically meaningful. The fitted model is statistically significant overall. Both main and quadratic effects are important, and interaction terms contribute meaningfully to the response variance.
 
@@ -216,7 +224,7 @@ ANOVA was used to assess the overall significance of the model and the contribut
 
 ---
 
-#### 2. Lack-of-Fit Test
+### 3.2. Lack-of-Fit Test
 
 The lack-of-fit test was used to determine whether the quadratic model adequately captures the observed response trends. A non-significant p-value (p > 0.05) suggests that the model fits the data well and no higher-order terms are needed. This ensures that the fitted surface is sufficient without overfitting. The non-significant p-value indicates that the model adequately fits the experimental data. There is no evidence of systematic deviation from the observed response, and no additional higher-order terms are needed.
 
@@ -230,7 +238,7 @@ The lack-of-fit test was used to determine whether the quadratic model adequatel
 
 ---
 
-#### 3. Canonical Analysis
+### 3.3. Canonical Analysis
 
 Canonical analysis was performed to identify the geometric nature of the response surface. By analyzing the eigenvalues of the quadratic form, the model determines whether the surface is convex, concave, or saddle-shaped. The stationary point (extremum) is also computed to locate the optimal combination of input factors. This provides geometric justification for selecting the operating region. Canonical analysis was performed on the combined model including all four process blocks, with the block factor included as a fixed effect. The resulting stationary point reflects the global optimum of the pooled response surface, assuming consistent curvature across blocks. The response surface is convex with a well-defined global minimum. This supports the identification of an optimal operating point within the tested parameter space.
 
@@ -245,6 +253,73 @@ Canonical analysis was performed to identify the geometric nature of the respons
 - **Nature of surface**: Convex (bowl-shaped)
 
 ---
+
+### 3.4 Categorical Factor Optimization
+
+To identify the globally optimal categorical configuration, a response surface model was independently fitted for each combination of blade material and tape type. Continuous variables (blade speed and cutting force) were modeled, and canonical analysis was performed to locate the stationary point in each case. Among the four categorical combinations, the ***Coated Blade + UV Tape*** configuration yielded the lowest predicted burr count (3.1) at its local optimum. The surface was convex in all cases, ensuring stability, but this combination provided the best performance and was therefore selected for final specification.
+
+## Validation Stage
+
+### 1. Taguchi L9 Orthogonal Array Design
+
+Two environmental noise factors were considered for robustness evaluation: Ambient Humidity (25–35, 45–55, 65–75 %RH) and Room Temperature (20, 25, 30 °C). A Taguchi L9 orthogonal array was constructed to systematically explore the 3×3 combination space. In each of the 9 experiments, control parameters were fixed at their optimal settings, while the noise levels varied according to the L9 matrix. As shown in the following table, burr count varied from 3.1 to 3.7, and visual pass rate remained above 92.5% across all environmental combinations. These results confirm that the process exhibits robustness against ambient humidity and room temperature variations commonly observed in manufacturing facilities.
+
+### 📐 Environmental Noise Factor Robustness Test
+
+<div align="center">
+
+| Experiment No. | Ambient Humidity (%RH) | Room Temperature (°C) | Burr Count (avg/unit) | Visual Pass Rate (%) |
+|:--------------:|:----------------------:|:----------------------:|:----------------------:|:---------------------:|
+| 1              | 25–35                  | 20                     | 3.2                    | 94.5                  |
+| 2              | 25–35                  | 25                     | 3.3                    | 94.1                  |
+| 3              | 25–35                  | 30                     | 3.4                    | 93.7                  |
+| 4              | 45–55                  | 20                     | 3.2                    | 94.3                  |
+| 5              | 45–55                  | 25                     | 3.1                    | 94.8                  |
+| 6              | 45–55                  | 30                     | 3.3                    | 94.0                  |
+| 7              | 65–75                  | 20                     | 3.5                    | 93.4                  |
+| 8              | 65–75                  | 25                     | 3.6                    | 92.8                  |
+| 9              | 65–75                  | 30                     | 3.7                    | 92.5                  |
+
+</div>
+
+### 2. Sensitivity Test Design
+
+A full factorial sensitivity analysis around the canonical stationary point (3975 rpm, 24.7 N) showed that burr count varied between 3.1 and 4.1 per unit, while visual pass rate ranged from 91.2% to 94.8%. Despite ±5% perturbations in both control parameters, the changes in output responses remained within acceptable limits, confirming the presence of a stable and manufacturable operating window.
+
+#### 📐 ±5% Full Combination Sensitivity Test
+
+<div align="center">
+
+| Blade Speed (rpm) | Cutting Force (N) | Burr Count (avg/unit) | Visual Pass Rate (%) |
+|:-----------------:|:-----------------:|:----------------------:|:---------------------:|
+| 3775              | 23.5              | 4.1                    | 91.2                  |
+| 3775              | 24.7              | 3.6                    | 93.1                  |
+| 3775              | 25.9              | 3.8                    | 92.6                  |
+| 3975              | 23.5              | 3.5                    | 93.4                  |
+| 3975              | 24.7              | **3.1**                | **94.8**              |
+| 3975              | 25.9              | 3.3                    | 94.0                  |
+| 4175              | 23.5              | 3.9                    | 91.8                  |
+| 4175              | 24.7              | 3.4                    | 93.5                  |
+| 4175              | 25.9              | 3.6                    | 92.9                  |
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
