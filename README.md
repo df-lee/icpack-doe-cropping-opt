@@ -54,6 +54,8 @@ flowchart LR
 
 In the preprocessing stage, a set of candidate process parameters was selected based on engineering experience, with the aim of evaluating their effects on burr formation during the cropping process, as illustrated in the table below.
 
+#### 📐 Preprocessing Parameter Table
+
 <div align="center">
     
 | Category              | Parameter            | Type           | Unit | Example Levels                                                  |
@@ -73,11 +75,21 @@ In the preprocessing stage, a set of candidate process parameters was selected b
 
 To efficiently screen non-influential variables, a Resolution IV fractional factorial design was conducted. This design allows for clear estimation of main effects while confounding higher-order interactions, making it suitable for preliminary screening. Significant factors identified in the screening phase were then subjected to a 3-level full factorial design, which enabled the detection of non-linear trends and second-order interactions among key parameters. Following this, a Central Composite Design (CCD) was implemented to fit a second-order response surface model. The CCD incorporated axial and center points to ensure rotatability and model curvature, allowing for precise determination of optimal operating regions. Model quality was evaluated using Analysis of Variance (ANOVA), lack-of-fit testing, and canonical analysis. These assessments confirmed the statistical significance of the model terms and characterized the nature of the response surface (e.g., convex, saddle-shaped).
 
+#### 🔢 DOE Resolution Comparison Table
+
+| Resolution | Main Effects Can Be Separated? | Two-Factor Interactions Separable? | Typical Use Case                         |
+|------------|-------------------------------|-------------------------------------|------------------------------------------|
+| I          | ❌ No                         | ❌ No                              | Not usable; all effects are confounded   |
+| II         | ❌ No                         | ❌ No                              | Avoid; even main effects are aliased     |
+| III        | ⚠️ Partially                  | ❌ No                              | Rough screening with limited reliability |
+| IV         | ✅ Yes                        | ⚠️ No                              | Efficient main-effect screening          |
+| V          | ✅ Yes                        | ✅ Yes                             | Detailed modeling with interactions      |
+| VI         | ✅ Yes                        | ✅ Yes                             | Complex system modeling, high precision  |
+
+
 
 Four key factors — blade speed, cutting force, blade material, and tape adhesion type — were identified as primary contributors based on their mechanical influence on cutting quality.
 
-
-## 📐 Preprocessing Parameter Selection
 
 
 
