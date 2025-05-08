@@ -77,6 +77,8 @@ In the preprocessing stage, a set of candidate process parameters was selected b
 
 To efficiently screen non-influential variables, a Resolution IV fractional factorial design was conducted. In the context of factorial design, resolution refers to the degree to which main effects and interaction effects can be estimated independently of one another. A higher resolution indicates less aliasing (i.e., overlap) between effects. Specifically, Resolution III designs confound main effects with two-factor interactions, Resolution IV designs keep main effects unaliased with any two-factor interactions (though two-factor interactions may be aliased with each other), and Resolution V designs separate both main effects and two-factor interactions from all other terms. A general rule is that aliasing may occur between two effects if the sum of their orders is less than the resolution of the design. Resolution IV was selected because it offers a practical balance between experimental efficiency and interpretability: it enables confident estimation of main effects—which are the primary focus during initial screening—while significantly reducing the number of required experimental runs compared to full factorial designs. This makes it well suited for identifying key process drivers without the overhead of modeling higher-order interactions.
 
+The resolution of a design is defined as the length of the shortest word in its defining relation.
+
 #### 🔢 DOE Resolution Comparison Table
 
 | Resolution   | Main Effects Can Be Separated?  | Two-Factor Interactions Separable?    | Typical Use Case                           |
