@@ -58,13 +58,13 @@ flowchart LR
     class D1 finalize;
 ```
 
-## Preprocessing Stage
+## 1. Preprocessing Stage
 
-### 1. Object Definition
+### 1.1 Object Definition
 
 In the preprocessing stage, a set of candidate process parameters was selected based on engineering experience, with the aim of evaluating their effects on burr formation during the cropping process, as illustrated in the table below.
 
-### 2. Parameter Selection
+### 1.2. Parameter Selection
 
 #### 📐 Preprocessing Parameter Table
 
@@ -83,9 +83,9 @@ In the preprocessing stage, a set of candidate process parameters was selected b
 
 </div>
 
-## Optimization Stage
+## 2. Optimization Stage
 
-### 1. Fractional Factorial Design
+### 2.1. Fractional Factorial Design
 
 To efficiently screen non-influential variables, a ***Resolution IV Fractional Factorial Design*** was conducted. In the context of factorial design, resolution of a design is defined as *the length of the shortest word in its defining relation.* A higher resolution indicates less aliasing (i.e., overlap) between effects. Specifically, Resolution III designs confound main effects with two-factor interactions, Resolution IV designs keep main effects unaliased with any two-factor interactions (though two-factor interactions may be aliased with each other), etc. Resolution IV was selected because it offers a practical balance between experimental efficiency and interpretability: it enables confident estimation of main effects—which are the primary focus during initial screening—while significantly reducing the number of required experimental runs compared to higher resolution settings. This makes it well suited for identifying key process drivers without the overhead of modeling higher-order interactions.
 
@@ -123,7 +123,7 @@ After collecting response data, the ***Half-Normal Plot of Effects*** was used t
 
 </div>
 
-### 2. Response Surface Modeling
+### 2.2. Response Surface Modeling
 
 ```mermaid
 graph TD
@@ -258,11 +258,11 @@ Canonical analysis was performed to identify the geometric nature of the respons
 
 To identify the globally optimal categorical configuration, a response surface model was independently fitted for each combination of blade material and tape type. Continuous variables (blade speed and cutting force) were modeled, and canonical analysis was performed to locate the stationary point in each case. Among the four categorical combinations, the ***Coated Blade + UV Tape*** configuration yielded the lowest predicted burr count (3.1) at its local optimum. The surface was convex in all cases, ensuring stability, but this combination provided the best performance and was therefore selected for final specification.
 
-## Validation Stage
+## 4. Validation Stage
 
-### 1. Model Robustness Testing
+### 4.1. Model Robustness Testing
 
-### 1.1 Taguchi L9 Orthogonal Array Design
+### 4.1.1 Taguchi L9 Orthogonal Array Design
 
 Two environmental noise factors were considered for robustness evaluation: Ambient Humidity (25–35, 45–55, 65–75 %RH) and Room Temperature (20, 25, 30 °C). A Taguchi L9 orthogonal array was constructed to systematically explore the 3×3 combination space. In each of the 9 experiments, control parameters were fixed at their optimal settings, while the noise levels varied according to the L9 matrix. As shown in the following table, burr count varied from 3.1 to 3.7, and visual pass rate remained above 92.5% across all environmental combinations. These results confirm that the process exhibits robustness against ambient humidity and room temperature variations commonly observed in manufacturing facilities.
 
@@ -284,7 +284,7 @@ Two environmental noise factors were considered for robustness evaluation: Ambie
 
 </div>
 
-### 1.2 Sensitivity Test Design
+### 4.1.2 Sensitivity Test Design
 
 A full factorial sensitivity analysis around the canonical stationary point (3975 rpm, 24.7 N) showed that burr count varied between 3.1 and 4.1 per unit, while visual pass rate ranged from 91.2% to 94.8%. Despite ±5% perturbations in both control parameters, the changes in output responses remained within acceptable limits, confirming the presence of a stable and manufacturable operating window.
 
@@ -306,7 +306,7 @@ A full factorial sensitivity analysis around the canonical stationary point (397
 
 </div>
 
-### 2. Validation Experiment
+### 4.2. Validation Experiment
 
 A pilot validation run was performed on 30 units using the recommended continuous settings (Blade Speed = 3975 rpm, Cutting Force = 24.7 N) and optimal categorical configuration (Coated Blade + UV Tape). Conducted under uncontrolled environmental conditions, the experiment demonstrated a 26% reduction in burr count and a 4.3% increase in visual pass rate, confirming that the optimized process performs reliably in production settings.
 
@@ -322,7 +322,7 @@ A pilot validation run was performed on 30 units using the recommended continuou
 
 </div>
 
-### 3. Spec
+### 4.3. Spec
 
 Based on the optimized continuous parameters (from canonical analysis) and categorical configuration (from block-wise model comparison), the final process specification is summarized in the following table. The specified parameter window incorporates sensitivity-tested ranges and robustness-tested environmental conditions, ensuring both performance and manufacturability.
 
