@@ -322,7 +322,7 @@ A pilot validation run was performed on 30 units using the recommended continuou
 
 </div>
 
-### 4.3. Spec
+## 5. Spec Stage
 
 Based on the optimized continuous parameters (from canonical analysis) and categorical configuration (from block-wise model comparison), the final process specification is summarized in the following table. The specified parameter window incorporates sensitivity-tested ranges and robustness-tested environmental conditions, ensuring both performance and manufacturability.
 
