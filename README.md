@@ -266,7 +266,7 @@ To identify the globally optimal categorical configuration, a response surface m
 
 Two environmental noise factors were considered for robustness evaluation: Ambient Humidity (25–35, 45–55, 65–75 %RH) and Room Temperature (20, 25, 30 °C). A Taguchi L9 orthogonal array was constructed to systematically explore the 3×3 combination space. In each of the 9 experiments, control parameters were fixed at their optimal settings, while the noise levels varied according to the L9 matrix. As shown in the following table, burr count varied from 3.1 to 3.7, and visual pass rate remained above 92.5% across all environmental combinations. These results confirm that the process exhibits robustness against ambient humidity and room temperature variations commonly observed in manufacturing facilities.
 
-### 📐 Environmental Noise Factor Robustness Test
+#### 📐 Environmental Noise Factor Robustness Test
 
 <div align="center">
 
@@ -326,7 +326,7 @@ A pilot validation run was performed on 30 units using the recommended continuou
 
 Based on the optimized continuous parameters (from canonical analysis) and categorical configuration (from block-wise model comparison), the final process specification is summarized in the following table. The specified parameter window incorporates sensitivity-tested ranges and robustness-tested environmental conditions, ensuring both performance and manufacturability.
 
-#### Process Specification for Cropping Stage
+#### 📐 Process Specification for Cropping Stage
 
 <div align="center">
 
@@ -336,7 +336,6 @@ Based on the optimized continuous parameters (from canonical analysis) and categ
 | Cutting Force         | 24.7               | 24.0 – 26.0           | N          | Stable under ±5% variation     |
 | Blade Material        | Coated Alloy       | —                     | —          | Lower burr, better edge score  |
 | Tape Adhesion Type    | UV-Curable         | —                     | —          | Clean release, no residue      |
-| Leadframe Thickness   | 0.15 mm            | 0.15 – 0.20 (tested)  | mm         | Stable in robustness test      |
 | Ambient Humidity      | —                  | 25% – 75% RH          | %RH        | Verified in Taguchi L9         |
 | Room Temperature      | —                  | 20°C – 30°C           | °C         | Verified in Taguchi L9         |
 
