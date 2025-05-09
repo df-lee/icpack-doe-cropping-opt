@@ -106,9 +106,9 @@ To efficiently screen non-influential variables, a ***Resolution IV Fractional F
 
 After collecting response data, the ***Half-Normal Plot of Effects*** was used to detect factors whose standardized effects deviate from the distribution expected under the null hypothesis. Significance was determined using *Lenth’s Pseudo Standard Error (PSE)*, with a threshold corresponding to a 0.05 significance level. To prioritize experimental resources, the ***Pareto Plot of Effects*** was used to rank all statistically significant factors by their absolute effect sizes. If the number of significant factors exceeded four, only the top four based on scaled effect magnitude were retained for subsequent full factorial optimization. This constraint ensures that the total number of experimental runs remains manageable while preserving the most influential contributors to the response.
 
-#### 📐 Half-Normal Plot of Effect...
+#### 📐 Half-Normal Plot of Effect
 
-#### 📐 Pareto Plot of Effects...
+#### 📐 Pareto Plot of Effects
 
 #### 📐 Selected Control Factors Table
 
