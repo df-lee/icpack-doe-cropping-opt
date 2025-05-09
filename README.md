@@ -262,7 +262,7 @@ To identify the globally optimal categorical configuration, a response surface m
 
 ### 4.1. Model Robustness Testing
 
-### 4.1.1 Taguchi L9 Orthogonal Array Design
+### 4.1.1. Taguchi L9 Orthogonal Array Design
 
 Two environmental noise factors were considered for robustness evaluation: Ambient Humidity (25–35, 45–55, 65–75 %RH) and Room Temperature (20, 25, 30 °C). A Taguchi L9 orthogonal array was constructed to systematically explore the 3×3 combination space. In each of the 9 experiments, control parameters were fixed at their optimal settings, while the noise levels varied according to the L9 matrix. As shown in the following table, burr count varied from 3.1 to 3.7, and visual pass rate remained above 92.5% across all environmental combinations. These results confirm that the process exhibits robustness against ambient humidity and room temperature variations commonly observed in manufacturing facilities.
 
@@ -284,7 +284,7 @@ Two environmental noise factors were considered for robustness evaluation: Ambie
 
 </div>
 
-### 4.1.2 Sensitivity Test Design
+### 4.1.2. Sensitivity Test Design
 
 A full factorial sensitivity analysis around the canonical stationary point (3975 rpm, 24.7 N) showed that burr count varied between 3.1 and 4.1 per unit, while visual pass rate ranged from 91.2% to 94.8%. Despite ±5% perturbations in both control parameters, the changes in output responses remained within acceptable limits, confirming the presence of a stable and manufacturable operating window.
 
