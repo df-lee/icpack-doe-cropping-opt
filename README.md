@@ -260,7 +260,9 @@ To identify the globally optimal categorical configuration, a response surface m
 
 ## Validation Stage
 
-### 1. Taguchi L9 Orthogonal Array Design
+### 1. Model Robustness Testing
+
+### Taguchi L9 Orthogonal Array Design
 
 Two environmental noise factors were considered for robustness evaluation: Ambient Humidity (25–35, 45–55, 65–75 %RH) and Room Temperature (20, 25, 30 °C). A Taguchi L9 orthogonal array was constructed to systematically explore the 3×3 combination space. In each of the 9 experiments, control parameters were fixed at their optimal settings, while the noise levels varied according to the L9 matrix. As shown in the following table, burr count varied from 3.1 to 3.7, and visual pass rate remained above 92.5% across all environmental combinations. These results confirm that the process exhibits robustness against ambient humidity and room temperature variations commonly observed in manufacturing facilities.
 
@@ -282,7 +284,7 @@ Two environmental noise factors were considered for robustness evaluation: Ambie
 
 </div>
 
-### 2. Sensitivity Test Design
+### Sensitivity Test Design
 
 A full factorial sensitivity analysis around the canonical stationary point (3975 rpm, 24.7 N) showed that burr count varied between 3.1 and 4.1 per unit, while visual pass rate ranged from 91.2% to 94.8%. Despite ±5% perturbations in both control parameters, the changes in output responses remained within acceptable limits, confirming the presence of a stable and manufacturable operating window.
 
@@ -302,11 +304,23 @@ A full factorial sensitivity analysis around the canonical stationary point (397
 | 4175              | 24.7              | 3.4                    | 93.5                  |
 | 4175              | 25.9              | 3.6                    | 92.9                  |
 
-
 </div>
 
+### 2. Validation Experiment
 
+A pilot validation run was performed on 30 units using the recommended continuous settings (Blade Speed = 3975 rpm, Cutting Force = 24.7 N) and optimal categorical configuration (Coated Blade + UV Tape). Conducted under uncontrolled environmental conditions, the experiment demonstrated a 26% reduction in burr count and a 4.3% increase in visual pass rate, confirming that the optimized process performs reliably in production settings.
 
+#### ✅ Validation Experiment Results Under Recommended Process Settings
+
+<div align="center">
+
+| Metric                  | Baseline Value       | Optimized Value      | Improvement        |
+|:-----------------------:|:--------------------:|:--------------------:|:------------------:|
+| Burr Count (avg/unit)   | 4.2                  | **3.1**              | ↓ 26.2%            |
+| Visual Pass Rate (%)    | 90.5%                | **94.8%**            | ↑ +4.3%            |
+| Edge Smoothness Score   | 3.5 / 5              | **4.4 / 5**          | ↑                  |
+
+</div>
 
 
 
